@@ -41,6 +41,31 @@
     <script src="js/modernizr.custom.js"></script>
 </head>
 
+<style>
+    .social{
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+        font-size: 25px;
+    }
+    .social li{
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #d9e0da;
+        border-radius: 50%;
+    }
+    .social li a{
+        color: #666666;
+    }
+    .social li:hover , .social li a:hover{
+        background-color: #72B626;
+        color: aliceblue;
+    }
+</style>
+
 <body class="home light">
     <!-- Live Style Switcher Starts - demo only -->
     <div id="switcher" class="">
@@ -157,7 +182,7 @@
             <div class="col-12 d-block d-sm-none">
                 <img src="img/img-mobile-light.jpg" class="img-fluid main-img-mobile" alt="my picture" />
             </div>
-            
+
             <div class="col-12 col-lg-8 offset-lg-4 home-details text-left text-sm-center text-lg-left">
                 <div>
                     <img src="img/img-mobile-light.jpg" class="img-fluid main-img-mobile d-none d-sm-block d-lg-none"
@@ -170,6 +195,16 @@
                     </h1>
                     <p class="open-sans-font">A professional Laravel developer with a lot of experience in building and managing websites. Skilled in using Laravel, PHP, JavaScript, MySQL, and connecting to APIs, with a focus on creating websites that can grow easily and stay secure.</p>
                     <a href="cv/cv.pdf" title="Download CV" target="_blank" class="btn btn-download" download>Download CV</a>
+                    <ul class="social list-unstyled pt-1 mb-5">
+                        <li class="facebook"><a title="Facebook" href="https://www.facebook.com/profile.php?id=100060707229004" target="_blank"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="twitter"><a title="Twitter" href="https://www.instagram.com/realaliansari02/" target="_blank"><i class="fa fa-instagram"></i></a>
+                        </li>
+                        <li class="youtube"><a title="Youtube" href="https://www.linkedin.com/in/ali-raza-prodev/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li class="dribbble"><a title="Dribbble" href="https://github.com/aliraza-prodev" target="_blank"><i class="fa fa-github"></i></a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
