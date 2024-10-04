@@ -56,7 +56,7 @@
     @media (max-width: 550px) {
         .footer p{
             text-align: center;
-        }
+        }    
     }
 </style>
 
@@ -194,17 +194,17 @@
             <!-- Left Side Ends -->
             <!-- Contact Form Starts -->
             <div class="col-12 col-lg-8">
-                <form class="contactform" method="post" action="http://slimhamdi.net/tunis/light/php/process-form.php">
+                <form class="contactform" method="post" id="my-form" action="https://formspree.io/f/movqajrl">
                     <div class="contactform">
                         <div class="row">
                             <div class="col-12 col-md-4">
-                                <input type="text" name="name" placeholder="YOUR NAME">
+                                <input type="text" name="name" placeholder="YOUR NAME" required>
                             </div>
                             <div class="col-12 col-md-4">
-                                <input type="email" name="email" placeholder="YOUR EMAIL">
+                                <input type="email" name="email" placeholder="YOUR EMAIL" required>
                             </div>
                             <div class="col-12 col-md-4">
-                                <input type="text" name="subject" placeholder="YOUR SUBJECT">
+                                <input type="text" name="subject" placeholder="YOUR SUBJECT" required>
                             </div>
                             <div class="col-12">
                                 <textarea name="message" placeholder="YOUR MESSAGE"></textarea>
@@ -213,6 +213,7 @@
                             <div class="col-12 form-message">
                                 <span class="output_message text-center font-weight-600 text-uppercase"></span>
                             </div>
+                            <p id="my-form-status"></p>
                         </div>
                     </div>
                 </form>
@@ -227,9 +228,60 @@
         <p>Copyright @2024 All rights reserved | This website is made by ALiRaza</p>
 </div>
 
+
+
+<script>
+    var form = document.getElementById("my-form");
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("my-form-status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "Thanks for your submission!";
+          form.reset()
+
+          var paragraph = document.getElementById("my-form-status");
+          paragraph.style.backgroundColor = "rgb(48 194 207)"; 
+          paragraph.style.padding = "30px";
+          paragraph.style.borderRadius = "30px 1px";
+          paragraph.style.color = "white";
+
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form";
+              var paragraph = document.getElementById("my-form-status");
+                paragraph.style.backgroundColor = "red"; 
+                paragraph.style.padding = "30px";
+                paragraph.style.borderRadius = "30px 1px";
+                paragraph.style.color = "Black";
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form";
+
+        var paragraph = document.getElementById("my-form-status");
+          paragraph.style.backgroundColor = "red"; 
+          paragraph.style.padding = "30px";
+          paragraph.style.borderRadius = "30px 1px";
+          paragraph.style.color = "Black";
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+  </script>
+
 <div class="elfsight-app-5b38fc07-d348-40a1-84d5-44934e6f5ea4" data-elfsight-app-lazy></div>
-
-
 <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
 <!-- Template JS Files -->
 <script src="js/jquery-3.5.0.min.js"></script>
